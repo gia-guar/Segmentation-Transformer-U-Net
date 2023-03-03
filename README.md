@@ -10,7 +10,7 @@ Dataset used in:<br>
 *Mateusz Buda, AshirbaniSaha, Maciej A. Mazurowski "Association of genomic subtypes of lower-grade gliomas with shape features automatically extracted by a deep learning algorithm." Computers in Biology and Medicine, 2019.*
 
 ### Callenges & what I'm learning
-Due to hardware limitations, I could not fit the whole Dataset in the GPU, as I usually would, with tensorflow.data.Dataset. Data generators are much more light on RAM. Still the model is huge and I can only train batches of 16 elements. This will affect the performances, however, longer training could be a (time-consuming) alternative. It's also been interesting to understand implementative choices made by other users on Kaggle. For example, adding more layers on the deeper blocks was an interesting choice to investigate.
+Due to hardware limitations, I could not fit the whole Dataset in the GPU, as I usually would, with tensorflow.data.Dataset. I found out data generators to be much more light on RAM. Still the model is huge and I can only train batches of 16 elements. This will affect the performances, however, longer training could be a solution. It's also been interesting to understand implementative choices made by other users on Kaggle. For example, adding more layers on the deeper blocks was an interesting choice to investigate.
 
 ## Introduction
 Lower-grade gliomas (LGG) are a group of WHO grade II and grade III brain tumors. As opposed
