@@ -30,16 +30,16 @@ They correspond to 110 patients included in The Cancer Genome Atlas (TCGA) lower
 ## U-Net Model
 The first model can be found in the notebook "Brain_Tumor_Segmentation_Model_1" replicates the literature featuring this dataset [3]. It has modest dimensions (7,774,049 total parameters). It consist of a 5 "floors" U-Net with double Conv2D layer per each floor
 
-The second model consist of a 4 layers ("floors") U-Net. The deeper floors feature a triple stack of Conv2D layers, this should allow more elaborated processing at a higher, semantic, level. It's not a small model, it is made of 10,655,809 trainable params, for this reason, a high number of epochs is implmented. Callbacks will be put in place in future to prevent overfitting, however, the phenomenon does not dramatically affect the performances even after 100 training epochs. Learning reached a plateau after ~35 epochs on the validation set.
+The second model consists of a 4 layers ("floors") U-Net. The deeper floors feature a triple stack of Conv2D layers, this should allow more elaborated processing at a higher, semantic, level. It's not a small model, it is made of 10,655,809 trainable params, for this reason, a high number of epochs is implmented. Callbacks will be put in place in future to prevent overfitting, however, the phenomenon does not dramatically affect the performances even after 100 training epochs. Learning reached a plateau after ~35 epochs on the validation set.
 
 ## Results and performances
 ### Smaller model
-The first model instead, has comparable training metrics, however, it seems to be less specific that the bigger model. Visual inspection of generated prediction highlights some sparse activations of the model when the label show no glioma:
+The first model has comparable training metrics to the second, however, it seems to be less specific that the bigger model. Visual inspection of generated predictions highlights some sparse activations of the model when the labels show no glioma:
 
 ![e1734b3d-b951-11ed-acbc-f02f74239260](https://user-images.githubusercontent.com/49094051/222588665-7d071b33-e93e-4a41-872d-df27b7a1549f.png)
 *First model underperforming with negative examples*
 
-This can possibly be solved applying post processing techniques to reduce the false positive rate [3], in particular, it is possible to make more coherent predictions if a three dimensional prediction is assembled. Skull stripping might be also an effective technique to reduce false positives since many of the wrong activation happen at the boudary between gray matter and skull.
+This can possibly be solved applying post processing techniques to reduce the false positive rate [3]. In particular, it is possible to make more coherent predictions if three dimensional predictions are assembled. Skull stripping might be also an effective technique to reduce false positives since many of the wrong activations happen at the boudary between gray matter and skull.
 
 ### Bigger model
 The second model shows decent results, however, it finds some difficulties when the shape of the glioma is irregular. Model history and more outputs can be found in this repository.
